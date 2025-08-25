@@ -1,0 +1,27 @@
+<p> Er Myndig? <span id="above18"></span></p>
+<p id="driver-License"></p>
+
+<script>
+    //Personlig info
+    const age = 23
+    const hasDriverLicesne = true 
+
+    //HTML elementer som manipuleres 
+    const above18 = document.getElementById("above18")
+    const licesne = document.getElementById("driver-Lincesne")
+
+    //Skjekker om man er 18 eller eldere 
+    if (age > 17) {
+        above18.innerHTML = "Ja"
+
+        //Om kravet er oppfulgt skjer if-else
+        if(hasDriverLicesne === true) {
+            licesne.innerHTML = "Har Bilserfikat"
+        } else {
+            licesne.innerHTML = "Har ikke Bilserfikat"
+        }
+    } else {
+        above18.innerHTML = "Nei"
+    }
+
+</script>
