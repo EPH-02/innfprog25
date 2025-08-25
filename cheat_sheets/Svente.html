@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with=device-width, internal-scale=1.0">"
+    <title>Svantes karakter</title>
+</head>
+<body>
+    <h1>Svantes karakter</h1>
+    <p id="resultat"></p>
+
+    <script>
+        //Registrering av resultater på deleskamen 
+        var delEksamen1 = 79;
+        var delEksamen2 = 82;
+        var delEksamen3 = 71;
+        var delEksamen4 = 84;
+        
+        //Teller = 0 for å telle antall eksamner
+        var antallEksamnerBestaatt = 0;
+
+        //Skjekker hvor mnage deleksamner som er bestått
+        //Forutsatt at det poeng er oppgitt i hele tall (ikke desimaler)
+        if(delEksamen1 >= 40){
+            antallEksamnerBestaatt++;
+        }
+        if(delEksamen2 >= 40){
+            antallEksamnerBestaatt++;
+        }
+        if(delEksamen3 >= 40){
+            antallEksamnerBestaatt++;
+        }
+        if(delEksamen4 >= 40){
+            antallEksamnerBestaatt++;
+        }
+
+        //Skjekker om alle deleksamner som er bestått
+        if(antallEksamnerBestaatt === 4){
+
+            //Utregning av karakter
+            var sumDelEksamner = delEksamen1 + delEksamen2 + delEksamen3 + delEksamen4;
+            //Lager  en tom variabel som skalinneholde karakter
+            var karakter;
+
+            if(sumDelEksamner > 360) {
+                karakter = "A";
+            } else if(sumDelEksamner > 320) {
+                karakter = "B";
+            } else if(sumDelEksamner > 240) {
+                karakter = "C";
+            } else if(sumDelEksamner > 200) {
+                karakter = "D";
+            } else if(sumDelEksamner >= 160) {
+                karakter = "E";
+            } else {
+               karakter = "F";
+            }
+
+            //Skirve ut resultatet av deleksamne 
+            document.getElementById("resultat").innerHTML = "Svante har bestått kurset med karakter " + karakter;
+
+        }   
+        //Avslutter if test om antallEksamnerBestaatt
+        else {
+            document.getElementById("resultat").innerHTML = "Svante har ikke bestått alle deleksamner, og derfor ikke bestått kurset";
+        }
+
+
+    </script>
+</body>
+</html>
