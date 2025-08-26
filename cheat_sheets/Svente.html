@@ -17,7 +17,7 @@
         const delEksamen4 = 84;
         
         //Teller = 0 for å telle antall eksamner
-        const antallEksamnerBestaatt = 0;
+        let antallEksamnerBestaatt = 0;
 
         //Skjekker hvor mnage deleksamner som er bestått
         //Forutsatt at det poeng er oppgitt i hele tall (ikke desimaler)
@@ -40,7 +40,7 @@
             //Utregning av karakter
             const sumDelEksamner = delEksamen1 + delEksamen2 + delEksamen3 + delEksamen4;
             //Lager  en tom variabel som skalinneholde karakter
-            const karakter;
+            let karakter;
 
             if(sumDelEksamner > 360) {
                 karakter = "A";
