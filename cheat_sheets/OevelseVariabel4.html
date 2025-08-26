@@ -7,16 +7,15 @@
 </head>
 <body>
     <p id="maillink"></p>
-    
     <script>
+        //Create variables
+        const name = "Eskil"
+        const email = "eskilph@hiof.no"
 
-        const name = "mail"
-        const mail = "eskilph@hiof.no"
-     
-        //Linjen er ikke riktig - må finne ut av senere
-        const mailLink = `<a href="mailto:${mail}"> Send mail til ${name}</a>`
-
-        document.getElementById("maillink").innerHTML = maillink 
+        //Build the email link with template literal:
+        const emailLink = `<a href="mailto:${email}">Send mail til ${name}</a>`
+        //Print the email link to the HTML element with id maillink
+        document.getElementById("maillink").innerHTML = emailLink
     </script>
 </body>
 </html>
