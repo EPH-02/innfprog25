@@ -11,13 +11,13 @@
 
     <script>
         //Registrering av resultater på deleskamen 
-        var delEksamen1 = 79;
-        var delEksamen2 = 82;
-        var delEksamen3 = 71;
-        var delEksamen4 = 84;
+        const delEksamen1 = 79;
+        const delEksamen2 = 82;
+        const delEksamen3 = 71;
+        const delEksamen4 = 84;
         
         //Teller = 0 for å telle antall eksamner
-        var antallEksamnerBestaatt = 0;
+        const antallEksamnerBestaatt = 0;
 
         //Skjekker hvor mnage deleksamner som er bestått
         //Forutsatt at det poeng er oppgitt i hele tall (ikke desimaler)
@@ -38,9 +38,9 @@
         if(antallEksamnerBestaatt === 4){
 
             //Utregning av karakter
-            var sumDelEksamner = delEksamen1 + delEksamen2 + delEksamen3 + delEksamen4;
+            const sumDelEksamner = delEksamen1 + delEksamen2 + delEksamen3 + delEksamen4;
             //Lager  en tom variabel som skalinneholde karakter
-            var karakter;
+            const karakter;
 
             if(sumDelEksamner > 360) {
                 karakter = "A";
