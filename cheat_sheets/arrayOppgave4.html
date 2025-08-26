@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><years class="html"></years></title>
+</head>
+<body>
+    <ul id="hendelser"></ul>
+
+    <script>
+        const years = [1066, 1564, 1455, 1346, 1215]
+
+        years.sort(function(a, b){return b - a})
+
+        console.log(years)
+
+        let hendelserHTML = ""
+
+        years.map((year) => hendelserHTML += `<li>${year}</li>`)
+
+        document.getElementById("hendelser").innerHTML = hendelserHTML
+    </script>
+</body>
+</html>
