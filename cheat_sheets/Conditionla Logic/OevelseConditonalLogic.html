@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fø<rerkort class="hetml"></rerkort></title>
+</head>
+<body>
+    <h2>Kvalifisesering for førerkort</h2>
+    <p id="carz"></p>
+    <h2>Kan spilleren åpne døren</h2>
+    <p id="doorKey"></p>
+    <h2>Pansjon</h2>
+    <p id="retire"></p>
+
+    <script>
+        const age = 23
+        const tg_passed = true 
+
+        if(age >= 18 && tg_passed === true){
+            document.getElementById("carz").innerHTML = "Du er kvalifisert for å få førerkort"
+        }else{
+            document.getElementById("carz").innerHTML = "Du er ikke kvalifisert"
+        }
+
+        const doorLocked = true
+
+        const backPack = "key"
+
+        let utskrift = document.getElementById("doorKey")
+
+        if(doorLocked === false ){
+            utskrift.innerHTML = "Spilleren har nøkkel"
+        }else{
+            if(backPack === "key"){
+                utskrift.innerHTML = "Spiller har nøkkel i ryggsekken"
+            }else{
+                utskrift.innerHTML = "Spiller har ikke nøkkel"
+            }
+        }
+
+        let retiremsg = document.getElementById("retire")
+
+        if(age >= 62 && age < 67){
+            retiremsg.innerHTML = "Du kan gå av meg AFP"
+        }else if(age >= 67){
+            retiremsg.innerHTML = "Du kan gå av med full pansjon"
+        }else{
+            retiremsg.innerHTML = `Du kan gå av med AFP om ${62 - age} år, og full pensjon om ${67 - age} år`
+        }
+    </script>
+</body>
+</html>
