@@ -31,6 +31,10 @@
                 platform: ["iOS", "MacOS"]
             }
         ]
+
+        const iOSGames = games.filter((games) => games.platform.includes(iOS))
+
+        document.getElementById("gameFilter").innerHTML = iOSGames.map((games) => `<li>${game.title}</li>`).join("")
     </script>
     
 </body>
