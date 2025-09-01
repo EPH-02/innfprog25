@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays - cheat sheet</title>
+</head>
+<body>
+    <h1>Arrayer og metoder</h1>
+    <p>Dette juksearket fungerer best med konsollen åpen</p>
+    <h3>Film Liste (<span id="movieCount">0</span> filer)</h3>
+    <ul id="moviesArray"></ul>
+    <h3>Nummer Liste</h3>
+    <ul id="nummerArray"></ul>
+    <h3>Film nr.2</h3>
+    <p>Film på index <span id="movieIndex">0</span> :<span id="movieTitle">Ingen film funnet</span></p>
+
+    <script>
+        const moviearray = [" RoboCop", " Star Wars", " Howls Moving Castle", " Hacksaw Ridge", " IT", " Alien", " Terminator", " Matrix", " John Wick",  " Lego Movie"]
+
+        moviearray.sort().reverse()
+
+        moviearray.push(" James Bond", " Silence")
+
+        moviearray.slice(3, 1)
+        
+        const movieExist = moviearray.includes("Alien")
+        console.log("Finnes Alien",moviearray)
+
+        const numbersArray = [43, 10, 282, 1, 930, 32, 543, 754]
+        numbersArray.sort(function(a, b){return b-a})
+
+        console.log(numbersArray)
+
+        document.getElementById("movieCount").innerHTML = moviearray.length
+        document.getElementById("moviesArray").innerHTML = moviearray
+        document.getElementById("nummerArray").innerHTML = numbersArray
+
+        const index = 4
+        document.getElementById("movieIndex").innerHTML = index
+        document.getElementById("movieTitle").innerHTML = moviearray[index]
+    </script>
+</body>
+</html>
