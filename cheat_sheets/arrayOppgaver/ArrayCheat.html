@@ -35,9 +35,10 @@
             }
         ]
 
-        const alderFilter = lecturers.filter((lecturers) => lecturers.birthYear >= 1990).map
+        const alderFilter = lecturers.filter((lecturers) => lecturers.birthYear >= 1990)
 
         document.getElementById("profiles").innerHTML = lecturers.map(lecturers => `<li>${lecturers.name}</li>`).join("")
+        document.getElementById("profiles").innerHTML = lecturers.map(lecturers => `<li>${lecturers.})
         
     </script>
     
