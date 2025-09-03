@@ -13,7 +13,10 @@
 
         const animals = ["Cat", "White Throat Dipper", "Puffin", "Lynx", "Moose", "Salmon", "Sheep", "Bear", "Deer", "Wolf"]
 
-        const dyrOgAnimals = `${dyr[1]} på engelsk er ${animals[1]}. ${dyr[2]} er litt anderledes og er på engelsk, ${animals[2]}`
+        const dyrIndex1 = 1
+        const dyrIndex2 = 2
+
+        const dyrOgAnimals = `${dyr[dyrIndex1]} på engelsk er ${animals[dyrIndex1]}. ${dyr[dyrIndex2]} er litt anderledes og er på engelsk, ${animals[dyrIndex2]}`
 
         document.getElementById("dyrTilAnimals").innerHTML = dyrOgAnimals
     </script>

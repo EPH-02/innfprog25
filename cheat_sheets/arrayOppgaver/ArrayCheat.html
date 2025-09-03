@@ -7,38 +7,53 @@
 </head>
 <body>
     <ul id="profiles"></ul>
+    <h2>Navn</h2>
+    <lu id="profilesNames"></lu>
+    <h2>Fødselsår</h2>
+    <lu id="profilesBirthYear"></lu>
     <script>
         const lecturers = [
             {
                 name: "Marius Akerbæl",
-                ofiice:"D1-016",
+                office:"D1-016",
                 email:"toremake@hiof.no",
-                birthYear:"1983",
+                birthYear:1983,
+                courses:["Innføring i Programmering", "Kommunikasjonsdesign", "Utvikling av Interaktive Nettsteder", "UI Prosjekter"]
             },
             {
                 name:"Daniela Blauhut",
-                ofiice:"D1-015",
+                office:"D1-015",
                 email:"danielb@hiof.no",
-                birthYear:"1977",
+                birthYear:1977,
+                courses:["Designmetoder", "UI Designprosjekt"]
             },
             {
                 name:"Ann-Charlotte Karlsen",
-                ofiice:"D1-062",
+                office:"D1-062",
                 email:"ackarlse@hiof.no",
-                birthYear:"1992",
+                birthYear:1992,
+                courses:["Webutvikling", "Utvikling av Interaktive Nettsteder"]
             },
             {
                 name:"Ole Edvard Ørebæk",
-                ofiice:"D1-061A",
+                office:"D1-061A",
                 email:"oledvo@hiof.no",
-                birthYear:"1993",
+                birthYear:1993,
+                courses:["Innføring i Programmering"]
+            },
+            {
+                name:"Thor Andreas Holberg Murtnes-Hatlestad",
+                office:"Hjemmekontor",
+                email: "thoraho@hiof.no",
+                birthYear:1985,
+                courses:["Innføring i Programmering"]
             }
         ]
 
-        const alderFilter = lecturers.filter((lecturers) => lecturers.birthYear >= 1990)
+        const ageProfiles = lecturers.filter((lecturers) => lecturers.birthYear.includes(1950-2000))
 
-        document.getElementById("profiles").innerHTML = lecturers.map(lecturers => `<li>${lecturers.name}</li>`).join("")
-        document.getElementById("profiles").innerHTML = lecturers.map(lecturers => `<li>${lecturers.})
+
+        document.getElementById("profilesBirthYear").innerHTML = ageProfiles.map(lecturers => `<li>${lecturers.birthYear}</li>`).join(" ")
         
     </script>
     
