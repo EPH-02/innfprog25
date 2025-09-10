@@ -92,6 +92,8 @@
         functions: 7
        }
 
+       //TODO: function update
+       function updateStatsUI(){
         //TODO: print waiting player...
         if(gameConfig.name === "") {
             document.getElementById("playerName").innerHTML = "Waiting for Player..."
@@ -111,10 +113,8 @@
         document.getElementById("loop").innerHTML = notebook.loops
         document.getElementById("function").innerHTML = notebook.functions
 
-        
-
-
-        //(BONUS) TODO: function for all prints
+        }
+        pdateStatsUI()
         
     </script>
 </body>

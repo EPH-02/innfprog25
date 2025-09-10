@@ -79,7 +79,7 @@
        const gameConfig = {
         player: "Eskil",
         energy: 7,
-        points: 150,
+        points: 1500,
         duration: 64
        }
 
@@ -92,13 +92,15 @@
         functions: 7
        }
 
+       //TODO: function update
+       function updateStatsUI(){
         //TODO: print waiting player...
         if(gameConfig.name === "") {
             document.getElementById("playerName").innerHTML = "Waiting for Player..."
         } else {
             document.getElementById("playerName").innerHTML = gameConfig.player
         }
-        
+
         //TODO: print playerinfo to HTML
         document.getElementById("playerName").innerHTML = gameConfig.player
         document.getElementById("energy").innerHTML = gameConfig.energy
@@ -112,7 +114,9 @@
         document.getElementById("loop").innerHTML = notebook.loops
         document.getElementById("function").innerHTML = notebook.functions
         //(BONUS) TODO: function for all prints
-        
+    }
+    
+    updateStatsUI()
     </script>
 </body>
 </html>
