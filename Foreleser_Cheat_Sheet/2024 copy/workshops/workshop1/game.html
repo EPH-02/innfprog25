@@ -40,22 +40,22 @@
                     <tr>
                         <td><img src="icons/variable.svg" alt="" /></td>
                         <td>Variabler</td>
-                        <td>0</td>
+                        <td id="variable">0</td>
                     </tr>
                     <tr>
                         <td><img src="icons/array.svg" alt="" /></td>
                         <td>Arrayer</td>
-                        <td>1</span></td>
+                        <td id="array">0</td>
                     </tr>
                     <tr>
                         <td><img src="icons/loop.svg" alt="" /></td>
                         <td>Løkker</td>
-                        <td>2</td>
+                        <td id="loop">0</td>
                     </tr>
                     <tr>
                         <td><img src="icons/function.svg" alt="" /></td>
                         <td>Funksjoner</td>
-                        <td>1</td>
+                        <td id="function">0</td>
                     </tr>
                 </table>
             </div>
@@ -76,14 +76,35 @@
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
         //TODO: config
-       
-        //TODO: notebook
-        
+       const gameConfig = {
+        player: "Eskil",
+        energy: 7,
+        points: 150,
+        duration: 64
+       }
 
+
+        //TODO: notebook
+       const notebook = {
+        variables: 3,
+        arrays: 2,
+        loops: 3,
+        functions: 7
+       }
+
+    
         //TODO: print playerinfo to HTML
-        
+        document.getElementById("playerName").innerHTML = gameConfig.player
+        document.getElementById("energy").innerHTML = gameConfig.energy
+        document.getElementById("points").innerHTML = gameConfig.points
+        document.getElementById("duration").innerHTML = gameConfig.duration
+
         //TODO: print notebook info to HTML
 
+        document.getElementById("variable").innerHTML = notebook.variables
+        document.getElementById("array").innerHTML = notebook.arrays
+        document.getElementById("loop").innerHTML = notebook.loops
+        document.getElementById("function").innerHTML = notebook.functions
         //(BONUS) TODO: function for all prints
         
     </script>
