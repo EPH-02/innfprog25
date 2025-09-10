@@ -92,7 +92,13 @@
         functions: 7
        }
 
-    
+        //TODO: print waiting player...
+        if(gameConfig.name === "") {
+            document.getElementById("playerName").innerHTML = "Waiting for Player..."
+        } else {
+            document.getElementById("playerName").innerHTML = gameConfig.player
+        }
+        
         //TODO: print playerinfo to HTML
         document.getElementById("playerName").innerHTML = gameConfig.player
         document.getElementById("energy").innerHTML = gameConfig.energy
