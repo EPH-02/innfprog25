@@ -17,7 +17,7 @@
     <header>
         <section id="player">
             <ul>
-                <li><img src="icons/shield.svg"> <span id="playerName">Marius</span></li>
+                <li><img src="icons/shield.svg"> <span id="playerName">Eskil</span></li>
                 <li><img src="icons/energydrink.svg" title="energy"> <span id="energy">3</span></li>
                 <li><img src="icons/notebook.svg"> <span id="notebookItems">0</span></li>
                 <li><img src="icons/solution.svg"> <span id="points">0</span> poeng</li>
@@ -97,12 +97,19 @@
         //TODO: print waiting player...
         if(gameConfig.player === "") {
             document.getElementById("playerName").innerHTML = "Waiting for Player..."
+            for(key in gameConfig){
+            gameConfig[key] = 0 
+            }
+
+            for(key in notebook){
+                notebook[key] = 0 
+            }
         } else {
             document.getElementById("playerName").innerHTML = gameConfig.player
         }
 
         //TODO: print playerinfo to HTML
-        document.getElementById("playerName").innerHTML = gameConfig.player
+        //document.getElementById("playerName").innerHTML = gameConfig.player
         document.getElementById("energy").innerHTML = gameConfig.energy
         document.getElementById("points").innerHTML = gameConfig.points
         document.getElementById("duration").innerHTML = gameConfig.duration
