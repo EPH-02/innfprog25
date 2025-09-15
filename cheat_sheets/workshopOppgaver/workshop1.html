@@ -95,7 +95,7 @@
        //TODO: function update
        function updateStatsUI(){
         //TODO: print waiting player...
-        if(gameConfig.name === "") {
+        if(gameConfig.player === "") {
             document.getElementById("playerName").innerHTML = "Waiting for Player..."
         } else {
             document.getElementById("playerName").innerHTML = gameConfig.player
@@ -114,7 +114,7 @@
         document.getElementById("function").innerHTML = notebook.functions
 
         }
-        pdateStatsUI()
+        updateStatsUI()
         
     </script>
 </body>
