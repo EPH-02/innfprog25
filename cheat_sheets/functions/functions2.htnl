@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions - Verifisering</title>
+</head>
+<body>
+    <script>
+        const users = [
+            {
+                name: "Eskil",
+                userName: "EPH",
+                email: "eskilph@hiof.no",
+                password: "abcdef"
+            },
+            {
+                 
+                name: "Even",
+                userName: "EH",
+                email: "evenh@hiof.no",
+                password: "abcdef1"
+            },
+            {
+                name: "Erik",
+                userName: "EP",
+                email: "erikp@hiof.no",
+                password: "abcdef2"
+            }
+        ]
+
+        function userVerify(email, password){
+            const filteredUser = users.filter(user => user.email === email && user.password === password)
+            if(filteredUser[0]){
+                console.log("Logg inn som " + filteredUser[0].userName)
+            } else{
+                alert("Feil passord eller e-post")
+            }
+        }
+
+        userVerify("eskilphiof.no", "abcdef")
+    </script>
+</body>
+</html>

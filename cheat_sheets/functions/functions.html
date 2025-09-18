@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+</head>
+<body>
+    <p>Eskil P. Haugen. E-post: <span id="<a href="mailto:eskilph@hiof.no">eskilph@hiof.no</a></span></p>
+    <script>
+
+        console.log("Før funskjon")
+
+        function myFirstFunction(){
+            console.log("Dette er funskjonen")
+        }
+
+        myFirstFunction()
+
+        console.log("Etter funksjon")
+
+        //Funkjson som skal ta imot parametere inne i "()"
+        function printName(name){
+            console.log(`Mitt navn er ${name}`)
+        }
+
+        printName("Eskil")
+
+        //Funksjon som tar imot flere parametere 
+        function printNameAndAge(name, age){
+            console.log(`Mitt navn er ${name}, og jeg er ${age} år gammel`)
+        }
+
+        printNameAndAge("Eskil", 23)
+
+        //Funksjon med default parameter 
+        function printDefaultName(name= "Default Name"){
+            console.log(name)
+        }
+
+        printDefaultName()
+
+        // Funkjson med epost som link med return
+        function createEmailLink(email){
+            if(!email){
+                return "Ikke oppgitt"
+            }
+            return `<a href="mailto:${email}">${email}</a>`
+        }
+
+        //console.log(createEmailLink("eskilph@hiof.no"))
+        //document.getElementById("emailContainer").innerHTML = createEmailLink("eskilph@hiof.no")
+
+        //Funksjon for alder utregning
+        function ageCalculator(birthYear, year){
+            const age = year - birthYear
+            const date = new Date().getFullYear()
+
+            console.log(age)
+            let text = ""
+            if(year > date){
+                text = `I ${year} vil du være ${age} år gammel`
+            } else if(year < date){
+                if(age < 0){
+                    text = `I ${year} er det ${Math.abs(age)} år til du blir født i ${birthYear}`
+                } else{
+                    text = `I ${year} var du ${age} år gammel.`
+                }
+            }
+            console.log(text)
+        }
+
+        const users = [
+        {
+            name:"Eskil",
+            birthYear: 2000
+        },
+        {
+            name:"Amanda",
+            birthYear: 2001
+        }
+        ]
+
+        ageCalculator(users[0].birthYear, users[1].birthYear)
+
+        //Funksjon for å retunere tilfeldig tall mellom a og b
+
+        function randomMinMax(a, b){
+            return Math.floor(Math.random() * (b - a + 1) + a)
+        }
+        console.log(randomMinMax(0, 100))
+    </script>
+</body>
+</html>
