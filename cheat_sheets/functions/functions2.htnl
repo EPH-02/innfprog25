@@ -31,6 +31,7 @@
 
         function userVerify(email, password){
             const filteredUser = users.filter(user => user.email === email && user.password === password)
+            console.log(filteredUser)
             if(filteredUser[0]){
                 console.log("Logg inn som " + filteredUser[0].userName)
             } else{
