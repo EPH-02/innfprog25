@@ -37,9 +37,15 @@
         function getUserInput(){
             let getUserName = document.getElementById("name")
             console.log(getUserName.value)
+            
+            userArray.push(getUserName.vlaue)
 
             getUserName.value = ""
         }
+
+        const userArray =[
+            
+        ]
 
         const submitform = document.getElementById("submitForm")
 
