@@ -11,7 +11,8 @@
 </head>
 <body>
     <header>
-        <h1 id="companyname"></h1>
+        <!--Mangler selve firmanavnet "Progammeriet"------------------------------------------------------------------------------------------->
+        <h1 id="companyname">Progammeriet</h1>
         <form>
             <input type="text" />
             <button>Søk</button>
@@ -35,7 +36,8 @@
         </p>
     </footer>
 
-    <scripttt>
+    <!--Taggen "<script>" var skrevet feil-------------------------------------------------------------------------------------------------->
+    <script>
         //Variabel with company name
         const company = "Programmeriet"
 
@@ -43,23 +45,24 @@
         const employees = [
             {name: "Hans Hansen", position: "Programmerer", email: "hans.hansen@email.com", office: "316", image: "man"},
             {name: "Jens Jensen", position: "Programmerer", email: "jens.jensen@email.com", office: "323", image: "man2"},
-            {name: "Trine Trinesdotter", position: "Programmerer", email: "trine.trinesdotter@email.com", office: "304", image: "woman"},
+            {name: "Trine Trinesdotter", position: "Programmerer", email: "trine.trinesdotter@email.com", office: "304", image: "woman"}
         ]
-
+        //Variabel images_folder manglet "" etter =-tegnet----------------------------------------------------------------------------------
         //Secret keys to access url and images
-        let images_folder = "img
+        let images_folder = "img"
         let secret_key = 0
-        let ak_key
+        let ak_key 
         
         //Turn on or off safeguard to allow system to run
-        const safeguard = false
+        const safeguard = true
         
         //Control of safeguard to create image folder name
         if(safeguard === true) {
             ak_key = secret_key + 1
         }
+        //Console.log var skrevet feil-------------------------------------------------------------------------------------------------------
         const safe_images_folder = images_folder += ak_key
-        console.logg("Image folder: " + safe_images_folder)
+        console.log("Image folder: " + safe_images_folder)
 
         let HTML_employees = ""
 
@@ -71,8 +74,8 @@
                     <p>${e.position} | Kontor: ${e.office}</p>
                     <p>${e.email}</p>
                 </article>`)
-
-                document.getElementbyId("employee_list").innerHTML = HTML_employeeees
+                //HTML_emplyees var stavet feil og getDocumentByID var stavet feil----------------------------------------------------------
+                document.getElementById("employee_list").innerHTML = HTML_employees
         }
 
         //System prints

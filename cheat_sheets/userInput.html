@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrukerInput</title>
+</head>
+<body>
+    <button onClick="printMessage()">Trykk på meg</button>
+
+    <button id="printEventMessage">Trykke på meg også</button>
+
+
+        <label for="name">
+            Name:
+            <input type="text" id="name">
+            <button id="submitForm">Submit</button>
+        </label>
+    <script>
+        function printMessage(){
+            const year = new Date().getFullYear()
+            console.log("Hei, verden. Året er " + year)
+        }
+
+        function printEventMessage(){
+            console.log("Hei, verden")
+        }
+
+        const eventBtn = document.getElementById("printEventMessage")
+
+        eventBtn.addEventListener("click", () => {
+            printEventMessage()
+        })
+
+        //Tar imot input ifra skjemafelt
+
+        function getUserInput(){
+            let getUserName = document.getElementById("name")
+            console.log(getUserName.value)
+
+            getUserName.value = ""
+        }
+
+        const submitform = document.getElementById("submitForm")
+
+        submitform.addEventListener("click", () => {
+            getUserInput()
+        })
+    </script>
+</body>
+</html>
