@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tastetrykk</title>
+    <style>
+        html{
+            width: 100dvw;
+            height: 100dvh;
+        }
+
+        #box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        //const box = document.getElementById("box")
+        //document.addEventListener("keydown", (event) => {
+         //   if(event.key == "ArrowLeft"){
+          
+           //     box.style.right += 10 + "px"
+         //   } else if (event.key == "ArrowRight"){
+         //       box.style.left += 10 + "px"
+           // }
+          //  console.log("Key pressed = ", + event.key)
+        //})
+
+        const box = document.getElementById('box')
+
+    function moveBox(x, y) {
+      // Get current position, convert from string "XXpx" to number, then add/subtract
+      let currentTop = parseInt(box.style.top)
+      let currentLeft = parseInt(box.style.left)
+
+      box.style.top = (currentTop + y) + 'px'
+      box.style.left = (currentLeft + x) + 'px'
+    }
+
+
+    document.addEventListener('keydown', (event) => {
+      const step = 10; // Pixels to move per key press
+      switch (event.key) {
+        case 'ArrowUp':
+          moveBox(0, -step);
+          break;
+        case 'ArrowDown':
+          moveBox(0, step);
+          break;
+        case 'ArrowLeft':
+          moveBox(-step, 0)
+          break;
+        case 'ArrowRight':
+          moveBox(step, 0)
+          break;
+      }
+      console.log(step)
+    })
+    
+    </script>
+</body>
+</html>

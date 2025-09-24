@@ -47,7 +47,7 @@
             //Filter 
             const filteredUser = users.filter(user => users.email === eMail && user.password === password)
             //If test
-            if(filteredUser.length <= 0){
+            if(!filteredUser === email && password){
                 console.log("Feil e-post eller passrord")
             }else(
                 console.log("Logget inn med" + eMail)
