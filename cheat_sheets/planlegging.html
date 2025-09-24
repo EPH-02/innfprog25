@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planlegging</title>
+</head>
+<body>
+    
+    <section>
+        <h2>Logg inn</h2>
+            <label for="email">
+                E-post:
+                <input type="text" id="email">
+            </label>
+        
+
+        <label for="password">
+            Passord:
+            <input type="text" id="password">
+        </label>
+        <button id="loginbtn">Logg inn</button>
+        <a href="#">Glemt passord?</a>
+    </section>
+
+    <script>
+        const users = [
+            {
+                email: "eskilph@hiof.no",
+                password: "12345"
+            }
+        ]
+
+        //Inlog
+        //Ta imot input fra bruker
+            //Epost verdi 
+           
+            //Passord verdi 
+            
+
+        //Button 
+        function verifyUser(){
+            const eMail = document.getElementById("email").value
+            const password = document.getElementById("password").value
+       
+            //Sende informasjon og skjekke etter bruker 
+            //Filter 
+            const filteredUser = users.filter(user => users.email === eMail && user.password === password)
+            //If test
+            if(filteredUser.length <= 0){
+                console.log("Feil e-post eller passrord")
+            }else(
+                console.log("Logget inn med" + eMail)
+            )
+        }
+
+        const loginBtn = document.getElementById("loginbtn")
+
+        loginBtn.addEventListener("click", () =>{
+            verifyUser()
+        })
+        //Link 
+            //Sende bruker til skjema med glemt passord
+
+    </script>
+
+</body>
+</html>
