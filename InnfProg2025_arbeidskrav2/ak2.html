@@ -16,7 +16,7 @@
     <p>Finnes ordet "problemløsning" i Programmeringsord-arrayen? <span id="problemlosning_sjekk"></span></p>
     <h2>Problem 3</h2>
     <p>Gjennomsnittet av tallene i tall_array_en er <span id="avg_array_one"></span></p>
-    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_one"></span></p>
+    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_two"></span></p>
 
     <script>
         //PROBLEM 1
@@ -25,18 +25,49 @@
         let random_color_code = "#"
 
         //Din kode for å løse problem 1 her.
-                document.getElementById("random_color").innerHTML = "ja"
+        function random_hex_color(){
+            for(let i = 0; i < 6; i++){
+                const pick_random_index = Math.floor(Math.random() * hexadecimal_characters_array.length)
+                random_color_code += hexadecimal_characters_array[pick_random_index]
+            }
+            return random_color_code
+        }
+       
+        document.getElementById("random_color").innerHTML = random_hex_color()
 
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //Din kode for å løse problem 2 her.
 
+
+        function ord_sjekker(ord){
+            if (programming_words.includes(ord)){
+                return "Ja"
+            }else {
+                return "Nei"
+            }
+        }
+
+        document.getElementById("betingelse_sjekk").innerHTML = ord_sjekker("betingelse")
+        document.getElementById("algoritme_sjekk").innerHTML = ord_sjekker("algoritme")
+        document.getElementById("problemlosning_sjekk").innerHTML = ord_sjekker("problemløsning")
+
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
+        function gjennomsnitt_array_en(tall_array_en){
+            return tall_array_en.reduce((sum, value) => sum + value, 0) / tall_array_en.length
+        }
+
+        function gjennomsnitt_array_to(tall_array_to){
+            return tall_array_to.reduce((sum, value) => sum + value, 0) / tall_array_to.length
+        }
+
+        document.getElementById("avg_array_one").innerHTML = gjennomsnitt_array_en(tall_array_en)
+        document.getElementById("avg_array_two").innerHTML = gjennomsnitt_array_to(tall_array_to)
     </script>
 </body>
 </html>
