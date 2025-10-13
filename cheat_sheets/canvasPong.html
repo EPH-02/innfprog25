@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Pong</title>
+    <style>
+        *{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="pong"></canvas>
+
+    <script>
+        const canvas = document.getElementById("pong")
+        const ctx = canvas.getContext("2d")
+
+        canvas.witdh = window.innerWidth
+        canvas.heigth = window.innerHeight
+
+        const racket = {
+            width: canvas.width / 40,
+            heigth: canvas. height / 3,
+            x: 0,
+            y: 0
+        }
+
+        const ball = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 10
+        }
+
+        ctx.beginPath()
+        //Spiller 1
+        ctx.rect( racket.width, (canvas.heigth - racket.height / 2), racket.width, racket.height)
+        //Spiller 2
+        ctx.rect( canvas.width - (racket.width * 2), (canvas.heigth - racket.height / 2), racket.width, racket.height)
+        ctx.fill()
+        ctx.closePath()
+
+        ctx.beginPath()
+        ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * MathPI)
+        ctx.fill()
+        ctx.closePath()
+        
+    </script>
+</body>
+</html>
