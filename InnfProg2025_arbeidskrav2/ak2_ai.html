@@ -16,23 +16,39 @@
     <p>Finnes ordet "problemløsning" i Programmeringsord-arrayen? <span id="problemlosning_sjekk"></span></p>
     <h2>Problem 3</h2>
     <p>Gjennomsnittet av tallene i tall_array_en er <span id="avg_array_one"></span></p>
-    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_one"></span></p>
+    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_two"></span></p>
 
     <script>
         //PROBLEM 1
         
         //AI-kode for å løse problem 1 her.
-
+        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')
+        document.getElementById('random_color').textContent = randomColor
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //AI-kode for å løse problem 2 her.
+        document.getElementById('betingelse_sjekk').textContent = 
+        programming_words.includes("betingelse") ? "Ja" : "Nei";
+
+        document.getElementById('algoritme_sjekk').textContent = 
+        programming_words.includes("algoritme") ? "Ja" : "Nei";
+
+        document.getElementById('problemlosning_sjekk').textContent = 
+        programming_words.includes("problemløsning") ? "Ja" : "Nei";
 
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //AI-kode for å løse problem 3 her.
+        function calculateAverage(arr) {
+        const sum = arr.reduce((total, num) => total + num, 0);
+        return (sum / arr.length).toFixed(2); // Rounded to 2 decimals
+    }
+
+        document.getElementById('avg_array_one').textContent = calculateAverage(tall_array_en);
+        document.getElementById('avg_array_two').textContent = calculateAverage(tall_array_to);
     </script>
 </body>
 </html>

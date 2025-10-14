@@ -59,7 +59,7 @@
 
         //Din kode for å løse problem 3 her.
         function gjennomsnitt_array(array){
-            return array.reduce((sum, value) => sum + value, 0) / array.length
+            return (array.reduce((sum, value) => sum + value, 0) / array.length).toFixed(4)
         }
 
         document.getElementById("avg_array_one").innerHTML = gjennomsnitt_array(tall_array_en)
