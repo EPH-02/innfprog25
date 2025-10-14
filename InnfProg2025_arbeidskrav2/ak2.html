@@ -58,16 +58,12 @@
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
-        function gjennomsnitt_array_en(tall_array_en){
-            return tall_array_en.reduce((sum, value) => sum + value, 0) / tall_array_en.length
+        function gjennomsnitt_array(array){
+            return array.reduce((sum, value) => sum + value, 0) / array.length
         }
 
-        function gjennomsnitt_array_to(tall_array_to){
-            return tall_array_to.reduce((sum, value) => sum + value, 0) / tall_array_to.length
-        }
-
-        document.getElementById("avg_array_one").innerHTML = gjennomsnitt_array_en(tall_array_en)
-        document.getElementById("avg_array_two").innerHTML = gjennomsnitt_array_to(tall_array_to)
+        document.getElementById("avg_array_one").innerHTML = gjennomsnitt_array(tall_array_en)
+        document.getElementById("avg_array_two").innerHTML = gjennomsnitt_array(tall_array_to)
     </script>
 </body>
 </html>
