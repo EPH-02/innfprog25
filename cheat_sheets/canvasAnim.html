@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animasjon i Canvas</title>
+</head>
+<body>
+    <canvas id="drawingArea"></canvas>
+    <script>
+        const canvas = document.getElementById("drawingArea")
+
+        const ctx = canvas.getContext("2d")
+
+        canvas.width = 800
+        canvas.height = 600
+
+        const ball = {
+            x: canvas.witdh / 2,
+            y: canvas.height / 2,
+            radius: 20,
+            speed: 1
+        }
+        
+        requestAnimationFrame = 
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.msRequestAnimationFrame 
+
+        function drawBall(){
+            ball.x += ball.speed
+            ball.y += ball.speed
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.beginPath()
+            ctx.fillStyle = "#003366"
+            ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI)
+            ctx.fill()
+            ctx.closePath()
+
+            requestAnimationFrame(drawBall) 
+        }
+
+        drawBall()
+
+      //  setInterval(() => {
+       //     ball.x += 10
+        //    drawBall()
+       //     console.log(ball.x, ball.y)
+       // }, 100)
+
+    </script>
+</body>
+</html>
