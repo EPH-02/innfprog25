@@ -25,6 +25,9 @@
         let random_color_code = "#"
 
         //Din kode for å løse problem 1 her.
+        //Funkjson som genererer en tilfeldig hexadesimal fargekode
+        //For-løkken kjører 6 ganger for å plukke 6 tilfeldige tegn fra hexadecimal_characters_array
+        //Math.floor og Math.random brukes for å generere en tilfeldig indeks
         function random_hex_color(){
             for(let i = 0; i < 6; i++){
                 const pick_random_index = Math.floor(Math.random() * hexadecimal_characters_array.length)
@@ -33,13 +36,15 @@
             return random_color_code
         }
        
+        //Skriver ut den genererte fargekoden i HTML-elementet med id "random_color"
         document.getElementById("random_color").innerHTML = random_hex_color()
 
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //Din kode for å løse problem 2 her.
-
+        //Funkjson som skjekker etter et ord i programming_words arrayen
+        //Bruker If-Else tester for å rturernere "ja" eller "nei"
         function ord_sjekker(ord){
             if (programming_words.includes(ord)){
                 return "Ja"
@@ -48,6 +53,7 @@
             }
         }
 
+        //Skriver ut resultatene av ord_sjekker funksjonen for hvert av de tre ordene
         document.getElementById("betingelse_sjekk").innerHTML = ord_sjekker("betingelse")
         document.getElementById("algoritme_sjekk").innerHTML = ord_sjekker("algoritme")
         document.getElementById("problemlosning_sjekk").innerHTML = ord_sjekker("problemløsning")
@@ -57,10 +63,14 @@
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
+        //Funksjon som beregner gjennomsnittet av tall i en array med bruk av reduce-metoden
+        //Reduce-metoden summerer alle verdiene i arrayen, og deretter deles summen på lengden av arrayen for å finne gjennomsnittet
+        //toFixed(4) brukes for å runde av resultatet til 4 desimaler
         function gjennomsnitt_array(array){
             return (array.reduce((sum, value) => sum + value, 0) / array.length).toFixed(4)
         }
 
+        //Skirver ut gjennomsnittet av tall_array_en og tall_array_to i respektive HTML-elementer
         document.getElementById("avg_array_one").innerHTML = gjennomsnitt_array(tall_array_en)
         document.getElementById("avg_array_two").innerHTML = gjennomsnitt_array(tall_array_to)
     </script>

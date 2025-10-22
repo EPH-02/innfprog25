@@ -22,12 +22,14 @@
         //PROBLEM 1
         
         //AI-kode for å løse problem 1 her.
+        //KI-løsningen genererer en tilfeldig hexadesimal fargekode ved å bruke Math.random og konvertere til hexadesimal
         const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')
         document.getElementById('random_color').textContent = randomColor
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //AI-kode for å løse problem 2 her.
+        //KI-løsningen sjekker direkte i arrayen uten en egen funksjon
         document.getElementById('betingelse_sjekk').textContent = 
         programming_words.includes("betingelse") ? "Ja" : "Nei";
 
@@ -42,6 +44,7 @@
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //AI-kode for å løse problem 3 her.
+        //KI-løsningen bruker en funksjon som beregner gjennomsnittet ved hjelp av reduce-metoden
         function calculateAverage(arr) {
         const sum = arr.reduce((total, num) => total + num, 0);
         return (sum / arr.length).toFixed(2); // Rounded to 2 decimals
