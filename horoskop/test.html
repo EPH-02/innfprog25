@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test horoskop fasinasjon</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/astronomy-engine@2.1.12/astronomy.min.js"></script>
+<style>
+  body {
+    background: #fdfaf5;
+    font-family: sans-serif;
+    text-align: center;
+  }
+  svg {
+    margin-top: 20px;
+  }
+  .sign {
+    font-size: 11px;
+    fill: #444;
+  }
+  .planet-label {
+    font-size: 10px;
+    fill: #000;
+  }
+  .house-line {
+    stroke: #555;
+    stroke-width: 1;
+    opacity: 0.6;
+  }
+  .asc-line {
+    stroke: #e74c3c;
+    stroke-width: 2;
+  }
+  #tooltip {
+    position: absolute;
+    padding: 6px 10px;
+    background: rgba(50, 50, 50, 0.85);
+    color: white;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 12px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<h2>Horoskop</h2>
+<div id="tooltip"></div>
+<svg id="chart" width="600" height="600"></svg>
+
+<script>
+const width = 600, height = 600, radius = 250;
+const centerX = width / 2, centerY = height / 2;
+const svg = d3.select("#chart");
+const tooltip = d3.select("#tooltip");
+
+// Zodiac signs
+const signs = [
+  "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+  "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"
+];
+
+// Draw zodiac ring
+const arc = d3.arc().innerRadius(radius - 30).outerRadius(radius);
+for (let i = 0; i < 12; i++) {
+  svg.append("path")
+    .attr("d", arc({
+      startAngle: (i * Math.PI / 6),
+      endAngle: ((i + 1) * Math.PI / 6)
+    }))
+    .attr("transform", `translate(${centerX}, ${centerY})`)
+    .attr("fill", i % 2 === 0 ? "#eee" : "#ddd")
+    .attr("stroke", "#999");
+
+  const angle = (i + 0.5) * Math.PI / 6 - Math.PI / 2;
+  svg.append("text")
+    .attr("x", centerX + (radius - 10) * Math.cos(angle))
+    .attr("y", centerY + (radius - 10) * Math.sin(angle))
+    .attr("text-anchor", "middle")
+    .attr("alignment-baseline", "middle")
+    .attr("transform", `rotate(${(angle * 180 / Math.PI)}, ${centerX + (radius - 10) * Math.cos(angle)}, ${centerY + (radius - 10) * Math.sin(angle)})`)
+    .attr("class", "sign")
+    .text(signs[i]);
+}
+
+// Date/time and location
+const date = new Date(Date.UTC(2002, 3, 28, 21, 45)); // April=3
+const observer = new Astronomy.Observer(59.9139, 10.7522, 0); // Oslo
+
+// Calculate approximate Ascendant
+function calcAscendant(observer, date) {
+  const lst = Astronomy.SiderealTime(date);
+  const ascDeg = (lst * 15 + observer.longitude) % 360;
+  return (ascDeg < 0 ? ascDeg + 360 : ascDeg);
+}
+const ascendant = calcAscendant(observer, date);
+
+// Draw houses (every 30° from Asc)
+for (let i = 0; i < 12; i++) {
+  const houseAngle = (360 - (ascendant + i * 30) + 90) * Math.PI / 180;
+  svg.append("line")
+    .attr("x1", centerX)
+    .attr("y1", centerY)
+    .attr("x2", centerX + radius * Math.cos(houseAngle))
+    .attr("y2", centerY + radius * Math.sin(houseAngle))
+    .attr("class", i === 0 ? "asc-line" : "house-line");
+}
+
+// Helper: format sign + degree
+function formatSignDegree(lon) {
+  let signIndex = Math.floor(lon / 30);
+  let degree = (lon % 30).toFixed(1);
+  return `${degree}° ${signs[signIndex]}`;
+}
+
+// Planets
+const planets = [
+  "Sun", "Moon", "Mercury", "Venus", "Mars",
+  "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"
+];
+
+planets.forEach(planet => {
+  const equ = Astronomy.Equator(planet, date, observer, true, true);
+  const ecl = Astronomy.Ecliptic(equ);
+  const lon = ecl.elon;
+  const posText = `${planet}: ${formatSignDegree(lon)}`;
+
+  const angle = (360 - lon + 90) * Math.PI / 180;
+  const x = centerX + (radius - 70) * Math.cos(angle);
+  const y = centerY + (radius - 70) * Math.sin(angle);
+
+  // Planet circle
+  svg.append("circle")
+    .attr("cx", x)
+    .attr("cy", y)
+    .attr("r", 6)
+    .attr("fill", "#ff7f50")
+    .on("mouseover", function(event) {
+      tooltip.style("display", "block")
+        .html(posText)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 20) + "px");
+    })
+    .on("mouseout", () => tooltip.style("display", "none"));
+
+  // Planet label
+  svg.append("text")
+    .attr("x", x)
+    .attr("y", y - 10)
+    .attr("text-anchor", "middle")
+    .attr("class", "planet-label")
+    .text(planet);
+});
+</script>
+
+</body>
+</html>
