@@ -16,11 +16,55 @@
             Hva er en rekursiv funksjon?
 
             --Ditt svar her. Husk kilder--
+
+            Rekursive funksjoner er funskjoner som kan kalle på seg selv
+            Funksjonene kan bli brukt til å løse problemer i flere steg
+            Dette vil føre til at problemene blir delt opp i mindre og mer håndterbare deler
+            Hele funksjonen stopper når den møter betingelser satt i funksjonen
+
+            Kilde: 
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursive_functions
+            https://www.w3schools.com/js/js_functions.asp
+
         */
 
+        // Tom array for å skrive inn tall
+        let tallListe = []
+
+        // Rekursiv funksjon som skriver
         function numberSelector() {
             // Din kode her
+            // Variabel som genererer et tilfeldig tall melllom 1 og 9 med metoden Math.random og Math.floor
+            // Variabelen tallListe får inn tallet fra "tall" variabelen med push
+            let tall = Math.floor(Math.random() * 9) + 1 
+            tallListe.push(tall) 
+        
+            // Her blir tallene skrevet ut 
+            // Med join metoden blir tallene i arrayen gjort om til en string med li-taggen rundth hveert tall
+            document.getElementById("numberList").innerHTML = "<li>" + tallListe.join("</li><li>") + "</li>"
+
+            // If-testing som sjekker om funksjonene treffer på tallet 4 eller 7
+            // Dette vil fungerer som en stoppbetingelse for funksjonen
+            if (tall === 4 || tall === 7){
+                // Henter ul-taggen med id "numberList"
+               let listePunkt = document.getElementById("numberList")
+               // Lager et nytt li-tagg til å skrive ut melding
+               let sluttPunkt = document.createElement("li")
+               // Skirver ut melding inn i li-taggen
+               sluttPunkt.textContent = "Stoppet på tallet " + tall
+               // Legger til li-taggen inn i ul-taggen
+               listePunkt.appendChild(sluttPunkt)
+               // Her kan funksjonen avsluttes dersom betingelsen er møtt
+                return
+            } else {
+                // Om ikke betingelsene er møtt, kaller funksjonen på seg selv igjen
+                numberSelector()
+            }
         }
+        // Starter funkosjonen
+        numberSelector()
+
+
     </script>
 </body>
 </html>

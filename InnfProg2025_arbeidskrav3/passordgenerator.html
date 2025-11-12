@@ -8,11 +8,33 @@
 <body>
     <h1>Passordgenerator</h1>
     <!-- Felter for brukervalg her -->
+    <!-- Lager et felt som skal definere hvor langt passordet skal være -->
+    <label for="length">Lengde på passordet (antall bokstaver, tegn og/eller symboler):</label>
+    <input type="number" id="length" min="1" max="" value="1"><br>
 
+    <!-- Flere felter med mulighet for å huke av, for å inkludere regler for passordet -->
+    <!-- Her er felt for hukavboks for små bokstaver -->
+    <label for="lowercase">Inkluder små bokstaver</label>
+    <input type="checkbox" id="lowercase" checked><br>
 
+    <!-- Her er felt for hukavboks for store bokstaver -->
+    <label for="uppercase">Inkluder store bokstaver</label>
+    <input type="checkbox" id="uppercase" checked><br>
+
+    <!-- Her er felt for hukavboks for siffere -->
+    <label for="numbers">Inkluder tall</label>
+    <input type="checkbox" id="numbers" checked><br>
+
+    <!-- Her er felt for hukavboks for spesielle tegn -->
+    <label for="symbols">Inkluder symboler</label>
+    <input type="checkbox" id="symbols" checked><br>
+
+    <!-- Knapp for å generere passord -->
+    <button id="generateBtn">Generer passord</button>
      <p>Ditt passord: <span id="generatedPassword"></span></p>
 
      <script>
+        // Variabler for de ulike tegnsettene for å lage passord
         const lowercase = "abcdefghijklmnopqrstuvwxyz";
         const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const numbers = "0123456789";
@@ -20,7 +42,49 @@
 
         function passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
             /* Din kode her */
+            // Lager en variabel som har en tom string
+            let charset = ""
+            // If-testene legger til de ulike egendefinerte charsetene fra varibelene fra tidligere i koden
+            if (includeLowercase) charset += lowercase
+            if (includeUppercase) charset += uppercase
+            if (includeNumbers) charset += numbers
+            if (includeSymbols) charset += symbols 
+
+            // Lager en if-test som sjekker om minst et av valgene er huket av
+            if (charset === "")
+            // Gir en melding til brukeren om at de må huke av minst ett valg uavhengig av lengde
+            return "Kryss av på minst et av alternativene"
+            
+            // Kjører en for-løkke som går like lenge som "length" variabelen 
+            // Math.random og Math.floor brukes for å generere en tilfeldig indeks i charset variabelen
+            // Det/de valgte tegnet/tegnene legges til "password" variabelen
+            let password = ""
+            for (let i = 0; i <length; i++) {
+                const randomArrayObject = Math.floor(Math.random() * charset.length)
+                password += charset[randomArrayObject]
+            }
+            // Her vil man få ut selve passordet som en string
+            return password
         }
+
+            // Her blir funksjonen koblet til knappen "generateBtn"
+            // Sette på en EventListener på knappen for å generere passordet når den bli klikket
+            document.getElementById("generateBtn").addEventListener("click", () => {
+                // "passwordgenerator" funkjsonen kalles med verdiene fra input-feltene 
+                // Bruker pasreInt for å gjøre string om til et tall
+                // Checked gir veriden true eller false avhenging av om boksen er huket av eller ikke
+                const length = parseInt(document.getElementById("length").value)
+                const includeLowercase = document.getElementById("lowercase").checked
+                const includeUppercase = document.getElementById("uppercase").checked
+                const includeNumbers = document.getElementById("numbers").checked
+                const includeSymbols = document.getElementById("symbols").checked
+
+                // Her vil vlagene fra brukeren bli sendt inn i funksjonen og resultatet lagret i "result" variabelen
+                const result = passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols)
+                // Her vil resultatet bli skrevet ut i id "generatedPassword"
+                document.getElementById("generatedPassword").textContent = result
+            })
+       
      </script>
 </body>
 </html>
